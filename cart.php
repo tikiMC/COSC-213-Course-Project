@@ -54,5 +54,4 @@ foreach ($items as $item) {
 ?>
 
 <h3>Total: $<?php echo number_format($total, 2); ?></h3>
-<p><a href="index.php">Back to Product Catalog</a></p>
 <a href="checkout.php">Proceed to Checkout</a>

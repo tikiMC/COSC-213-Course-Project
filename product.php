@@ -47,6 +47,5 @@ if (!$product) {
         echo '<p><a href="login.php">Login</a> to add this product to your cart.</p>';
     }
     ?>
-    <p><a href="index.php">Back to Product Catalog</a></p>
 </body>
 </html>
