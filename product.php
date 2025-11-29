@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'includes/db.php';
+include 'includes/header.php';
 
 // Validate product ID
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {

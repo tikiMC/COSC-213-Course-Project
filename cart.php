@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'includes/db.php';
+include 'includes/header.php';
 
 // Ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
