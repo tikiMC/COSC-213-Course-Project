@@ -14,6 +14,13 @@ foreach ($products as $product) {
     echo "<h2>" . htmlspecialchars($product['name']) . "</h2>";
     echo "<p>Price: $" . number_format($product['price'], 2) . "</p>";
 
+    //Adding stock info
+    if($product['stock'] > 0){
+        echo "<p>In Stock: " . $product['stock'] . "</p>";
+    }else{
+        echo "<p style='color:red; font-weight:bold;'>Out of Stock</p>";
+    }
+
     // Show image if it exists
     if (!empty($product['image_path'])) {
         echo "<img src='images/" . htmlspecialchars($product['image_path']) . "' width='150'>";

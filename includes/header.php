@@ -1,5 +1,5 @@
 <?php
-session_start(); // make sure session is started
+session_start();
 ?>
 <nav>
     <a href="index.php">Home</a> |
