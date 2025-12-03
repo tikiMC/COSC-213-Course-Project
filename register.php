@@ -1,6 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/header.php';
+echo "<link rel='stylesheet' type='text/css' href='styles.css' />";
 
 $error = "";
 
