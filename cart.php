@@ -1,6 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/header.php';
+echo "<link rel='stylesheet' type='text/css' href='styles.css' />";
 
 // Ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -23,35 +24,37 @@ $items = $stmt->fetchAll();
 
 <h1>Your Shopping Cart</h1>
 
-<?php
-if (empty($items)) {
-    echo "<p>Your cart is empty.</p>";
-    echo '<p><a href="index.php">Back to Product Catalog</a></p>';
-    exit;
-}
-
-$total = 0;
-
-foreach ($items as $item) {
-    $line_total = $item['price'] * $item['quantity'];
-    $total += $line_total;
-    ?>
-    <div style="border:1px solid #ccc; padding:10px; margin:10px;">
-        <h2><?php echo htmlspecialchars($item['name']); ?></h2>
-        <p>Price: $<?php echo number_format($item['price'], 2); ?></p>
-        <p>Quantity: <?php echo $item['quantity']; ?></p>
-        <p>Line Total: $<?php echo number_format($line_total, 2); ?></p>
-        <?php if (!empty($item['image_path'])): ?>
-            <img src="images/<?php echo htmlspecialchars($item['image_path']); ?>" width="100">
-        <?php endif; ?>
-        <form method="post" action="remove_from_cart.php" style="margin-top:5px;">
-            <input type="hidden" name="cart_item_id" value="<?php echo $item['cart_item_id']; ?>">
-            <button type="submit">Remove</button>
-        </form>
-    </div>
+<div class='product-container'>
     <?php
-}
-?>
+    if (empty($items)) {
+        echo "<p>Your cart is empty.</p>";
+        echo '<button><a href="index.php">Back to Product Catalog</a></button>';
+        exit;
+    }
 
-<h3>Total: $<?php echo number_format($total, 2); ?></h3>
-<a href="checkout.php">Proceed to Checkout</a>
+    $total = 0;
+
+    foreach ($items as $item) {
+        $line_total = $item['price'] * $item['quantity'];
+        $total += $line_total;
+        ?>
+        <div class='product'>
+            <h2><?php echo htmlspecialchars($item['name']); ?></h2>
+            <p class='product-price'>Price: $<?php echo number_format($item['price'], 2); ?></p>
+            <p class='product-stock'>Quantity: <?php echo $item['quantity']; ?></p>
+            <p class='product-price'>Line Total: $<?php echo number_format($line_total, 2); ?></p>
+            <?php if (!empty($item['image_path'])): ?>
+                <img src="images/<?php echo htmlspecialchars($item['image_path']); ?>" width="100">
+            <?php endif; ?>
+            <form method="post" action="remove_from_cart.php" style="margin-top:5px;">
+                <input type="hidden" name="cart_item_id" value="<?php echo $item['cart_item_id']; ?>">
+                <button type="submit">Remove</button>
+            </form>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+
+<p class='product-price'>Total: $<?php echo number_format($total, 2); ?></>
+<button><a href="checkout.php">Proceed to Checkout</a></button>
