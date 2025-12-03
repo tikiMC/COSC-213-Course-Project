@@ -2,6 +2,7 @@
 include 'includes/header.php';
 include 'includes/admin_check.php';
 include 'includes/db.php';
+echo "<link rel='stylesheet' type='text/css' href='styles.css' />";
 ?>
 
 <h1>Add Product</h1>
@@ -50,3 +51,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
+
