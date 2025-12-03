@@ -2,6 +2,7 @@
 include 'includes/header.php';
 include 'includes/admin_check.php';
 include 'includes/db.php';
+echo "<link rel='stylesheet' type='text/css' href='styles.css' />";
 
 $id = $_GET['id'];
 
@@ -11,3 +12,4 @@ $stmt->execute([$id]);
 header("Location: admin.php");
 exit;
 ?>
+
