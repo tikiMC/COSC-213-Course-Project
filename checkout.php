@@ -1,6 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/header.php';
+echo "<link rel='stylesheet' type='text/css' href='styles.css' />";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -108,10 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($cart_items as $item) {
         $line_total = $item['price'] * $item['quantity'];
         $total += $line_total;
-        echo "<p>" . htmlspecialchars($item['name']) . " x {$item['quantity']} = $" . number_format($line_total,2) . "</p>";
+        echo "<p class='product-stock'>" . htmlspecialchars($item['name']) . " x {$item['quantity']} = $" . number_format($line_total,2) . "</p>";
     }
     ?>
-    <p><strong>Total: $<?php echo number_format($total,2); ?></strong></p>
+    <p class='product-price'><strong>Total: $<?php echo number_format($total,2); ?></strong></p>
 
     <button type="submit">Place Order</button>
 </form>
