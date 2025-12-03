@@ -1,6 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/header.php';
+echo "<link rel='stylesheet' type='text/css' href='styles.css' />";
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Invalid product ID.");
@@ -24,13 +25,13 @@ if (!empty($product['image_path'])) {
 }
 ?>
 
-<p>Price: $<?php echo number_format($product['price'], 2); ?></p>
+<p class='product-price'>Price: $<?php echo number_format($product['price'], 2); ?></p>
 
 
 <?php
 //Added stock info
 if ($product['stock'] > 0) {
-    echo "<p>In Stock: " . $product['stock'] . "</p>";
+    echo "<p class='product-stock'>In Stock: " . $product['stock'] . "</p>";
 } else {
     echo "<p style='color:red; font-weight:bold;'>Out of Stock</p>";
 }
