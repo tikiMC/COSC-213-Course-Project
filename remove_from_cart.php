@@ -1,6 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/header.php';
+echo "<link rel='stylesheet' type='text/css' href='styles.css' />";
 
 // Ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
